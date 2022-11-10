@@ -77,7 +77,7 @@ X2 = dataX2[-60*h:,1] # short term data fit was compilation of next 6 hours
 X = np.array(X).reshape(-1,1)
 X2 = np.array(X2).reshape(-1,1)
 
-# Horizontal recurence of LSTM
+# Horizontal recurence of GRU
 step = 128
 
 training_set, test_set = train_test_split(X,test_size=1/3,shuffle=False) # I used test set equal training set to predict next 6 hours
@@ -113,7 +113,7 @@ training_set = training_set.reshape(-1, 1)
 # transforms test to Nx1 matrix 
 TsC = sc.fit_transform(training_set)
 
-# forming training tensor for LSTM NN
+# forming training tensor for GRU NN
 X_train,_ = vanilly(TsC,step)
 # transforms train to NxS(step)x1 matrix for LSTM regression
 X_train = X_train.reshape(X_train.shape[0],X_train.shape[1],1)
@@ -133,7 +133,7 @@ X2 = X2.reshape(X2.shape[0],1)
 """ XEROX_INFINITY """
 ############################################################################### #                                                                     
 XeroX_infinity = Sequential()                                                   #    
-XeroX_infinity.add(GRU(units = 256,return_sequences=True,input_shape=(step,1)))#
+XeroX_infinity.add(GRU(units = 256,return_sequences=False,input_shape=(step,1)))#
 #XeroX_infinity.add(LSTM(500,return_sequences=True))
 #XeroX_infinity.add(LSTM(500))
 XeroX_infinity.add(Dense(1))                                                    #            
