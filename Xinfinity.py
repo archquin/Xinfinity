@@ -59,7 +59,7 @@ mps = 1
 # is an actual thing. Wow, tomorrow is just enough, two days, and good staff lays. Three, and you won t ever be free :P. Four, and your
 # prediction is floor. Five, just make it live, and six, what a fix; it would be but its aint....
 
-prd = 1 # days to fit
+prd = 2 # days to fit
 mrd = 1 # minute intervals for y
 
 data = yf.download(tickers = 'EUR=X' ,period =str(pas)+'d', interval = str(mps)+'m')
